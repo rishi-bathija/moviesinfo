@@ -47,8 +47,8 @@ const Carousel = ({ title, data, loading, endpoint }) => {
           fontWeight: 'normal'
         }}>{title}</div>}
 
-        <i class="fa-solid fa-arrow-left" onClick={() => navigation("left")}></i>
-        <i class="fa-solid fa-arrow-right" onClick={() => navigation("right")}></i>
+        {/* <i class="fa-solid fa-arrow-left" onClick={() => navigation("left")}></i>
+        <i class="fa-solid fa-arrow-right" onClick={() => navigation("right")}></i> */}
 
         {!loading ? (
           <div className="carouselItems" ref={carouselContainer}>
