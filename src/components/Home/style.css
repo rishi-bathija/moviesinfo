@@ -1,0 +1,87 @@
+.carouselSection {
+    position: relative;
+    margin-bottom: 70px;
+}
+
+.carouselSection > .contentWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.carouselTitle {
+    font-size: 24px;
+    color: white;
+    font-weight: normal;
+}
+
+.filter{
+    display: flex;
+    justify-content: space-between;
+}
+
+.filterTitle{
+    font-size: 24px;
+    color: white;
+    font-weight: normal;
+    margin: 0 5px;
+}
+/* Add these CSS styles to your style.css or style.scss file */
+.switchingTabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .tabItems {
+    position: relative;
+  }
+  
+  .tabItem {
+    cursor: pointer;
+    padding: 10px 15px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .tabItem:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .movingBg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: #007bff;
+    transition: left 0.3s;
+  }
+  
+  /* Style the dropdown */
+  select {
+    padding: 10px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  select:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
