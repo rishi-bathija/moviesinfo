@@ -50,6 +50,7 @@ const Explore = () => {
             `/discover/${mediaType}?page=${pageNum}`,
             filters
         ).then((res) => {
+            console.log("res", res);
             if (data?.results) {
                 setData({
                     ...data,
@@ -84,7 +85,7 @@ const Explore = () => {
         if (action.name === "genres") {
             setGenre(selectedItems);
             if (action.action !== "clear") {
-                let genreId = selectedItems.map((g) => g.id); 
+                let genreId = selectedItems.map((g) => g.id);
                 genreId = JSON.stringify(genreId).slice(1, -1);
                 filters.with_genres = genreId;
             } else {
