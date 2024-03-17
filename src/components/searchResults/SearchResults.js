@@ -7,6 +7,7 @@ import ContentWrapper from "../contentWrapper/ContentWrapper"
 import noResults from "../../assets/no-results.png"
 import Spinner from "../spinner/Spinner"
 import MovieCard from "../movieCard/MovieCard"
+import { VITE_REACT_APP_API_KEY_2 } from "../../utils/constants"
 
 
 const SearchResults = () => {
@@ -16,7 +17,7 @@ const SearchResults = () => {
     const { query } = useParams();
 
 
-    const apiKey = process.env.REACT_APP_API_KEY_2; // Replace with your TMDb API key
+    const apiKey = VITE_REACT_APP_API_KEY_2; // Replace with your TMDb API key
     const apiUrl = 'https://api.themoviedb.org/3'; // TMDb API base URL
 
     const fetchDataFromApi = async (endpoint, params = {}) => {
@@ -76,18 +77,18 @@ const SearchResults = () => {
 
     const fetchNextPageData = async () => {
         try {
-          const res = await fetchDataFromApi('/search/multi', { query, pageNum});
-        //   ('/search/multi', { query, page: 1 })
-          if (data?.results) {
-            setData({ ...data, results: [...data?.results, ...res.results] });
-          } else {
-            setData(res);
-          }
-          setPageNum((prev) => prev + 1);
+            const res = await fetchDataFromApi('/search/multi', { query, pageNum });
+            //   ('/search/multi', { query, page: 1 })
+            if (data?.results) {
+                setData({ ...data, results: [...data?.results, ...res.results] });
+            } else {
+                setData(res);
+            }
+            setPageNum((prev) => prev + 1);
         } catch (error) {
-          console.error('Error fetching next page data:', error);
+            console.error('Error fetching next page data:', error);
         }
-      };
+    };
 
     return (
         <div className="searchResultsPage">

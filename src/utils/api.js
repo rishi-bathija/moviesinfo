@@ -1,5 +1,7 @@
 // import axios from "axios";
 
+import { VITE_REACT_APP_API_KEY_2 } from "./constants";
+
 // const BASE_URL = "https://api.themoviedb.org/3";
 // const TMDB_API = process.env.REACT_APP_API_KEY_2 ;
 
@@ -21,12 +23,12 @@
 // };
 
 const BASE_URL = "https://api.themoviedb.org/3";
-const TMDB_API = process.env.REACT_APP_API_KEY_2;
+const TMDB_API = VITE_REACT_APP_API_KEY_2;
 
 export const fetchDataFromApi = async (url, params) => {
   try {
     const queryString = new URLSearchParams({ ...params, api_key: TMDB_API }).toString();
-    
+
     const response = await fetch(BASE_URL + url + "?" + queryString, {
       method: "GET",
     });

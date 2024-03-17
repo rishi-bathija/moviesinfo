@@ -10,6 +10,7 @@ import { fetchDataFromApi } from "../../utils/api";
 import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
 import MovieCard from "../../components/movieCard/MovieCard";
 import Spinner from "../../components/spinner/Spinner";
+import { VITE_REACT_APP_API_KEY_2 } from "../../utils/constants";
 
 let filters = {};
 
@@ -46,22 +47,33 @@ const Explore = () => {
     };
 
     const fetchNextPageData = () => {
-        fetchDataFromApi(
-            `/discover/${mediaType}?page=${pageNum}`,
-            filters
-        ).then((res) => {
-            console.log("res", res);
-            if (data?.results) {
-                setData({
-                    ...data,
-                    results: [...data?.results, ...res.results],
-                });
-            } else {
-                setData(res);
-            }
-            setPageNum((prev) => prev + 1);
-        });
+        const nextPageUrl = `https://api.themoviedb.org/3/discover/movie?page=${pageNum + 1}&api_key=${VITE_REACT_APP_API_KEY_2}`;
+
+        fetch(nextPageUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("res", data);
+                if (data.results) {
+                    setData(prevData => ({
+                        ...prevData,
+                        results: [...prevData.results, ...data.results],
+                    }));
+                } else {
+                    setData(data);
+                }
+                setPageNum(prevPageNum => prevPageNum + 1);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                // Handle error here if needed
+            });
     };
+
 
     useEffect(() => {
         filters = {};

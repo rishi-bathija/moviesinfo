@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import ApiContext from './ApiContext';
 import { useEffect } from 'react';
+import { VITE_REACT_APP_API_KEY_2 } from '../../utils/constants';
 
 const ApiState = (props) => {
   const [isLoading, setisLoading] = useState(true);
@@ -10,9 +11,10 @@ const ApiState = (props) => {
   const [isError, setisError] = useState({ show: false, msg: '' });
   const [query, setQuery] = useState('titanic');
 
+
   const API_URL = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&s=${query}`;
 
-  const API_URL_1 = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY_2}`;
+  const API_URL_1 = `https://api.themoviedb.org/3/movie/popular?api_key=${VITE_REACT_APP_API_KEY_2}`;
 
 
   const getMovies = async (url) => {
@@ -43,14 +45,14 @@ const ApiState = (props) => {
     }
   };
 
-  const getData = async (url) =>{
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
+  const getData = async (url) => {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   // useEffect(()=>{
@@ -67,7 +69,7 @@ const ApiState = (props) => {
   }, [query]);
 
   return (
-    <ApiContext.Provider value={{ isLoading, isError, movie, setQuery, query, API_URL}}>
+    <ApiContext.Provider value={{ isLoading, isError, movie, setQuery, query, API_URL }}>
       {props.children}
     </ApiContext.Provider>
   );
